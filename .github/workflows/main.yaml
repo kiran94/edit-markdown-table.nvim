@@ -9,9 +9,11 @@ jobs:
   release:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: write
     steps:
-      - name: Release
-        uses: go-semantic-release/action@v1
+      - uses: actions/checkout@v3
+      - uses: go-semantic-release/action@v1
         if: github.ref == 'refs/heads/main'
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
