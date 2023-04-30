@@ -1,0 +1,69 @@
+edit-markdown-table.txt
+
+================================================================================
+CONTENTS                                            *edit-markdown-table-contents*
+
+1. edit-markdown-table.nvim.........|edit-markdown-table-edit-markdown-table.nvim|
+    1.1. Install.....................................|edit-markdown-table-install|
+        1.1.1. Dependencies.....................|edit-markdown-table-dependencies|
+        1.1.2. Usage...................................|edit-markdown-table-usage|
+    1.2. Preview.....................................|edit-markdown-table-preview|
+
+================================================================================
+EDIT-MARKDOWN-TABLE.NVIM            *edit-markdown-table-edit-markdown-table.nvim*
+
+[](https://github.com/kiran94/edit-markdown-table.nvim/actions/workflows/main.yaml)
+>
+    Edit Markdown Tables from Neovim
+<
+
+`edit-markdown-table.nvim` is a simple plugin which makes updating markdown tables a breeze, even for tables with length strings. See the preview (#Preview) for a demo.
+
+--------------------------------------------------------------------------------
+INSTALL                                              *edit-markdown-table-install*
+
+Using `lazy.nvim`:
+>
+    {
+        'kiran94/edit-markdown-table.nvim',
+        config = function()
+            require('edit-markdown-table').setup()
+        end,
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        cmd = "EditMarkdownTable",
+    },
+<
+
+DEPENDENCIES                                    *edit-markdown-table-dependencies*
+
+*   Neovim 0.9+
+*   The Treesitter (https://github.com/nvim-treesitter/nvim-treesitter#language-parsers) `markdown` parser installed (`:TSInstall markdown`)
+
+USAGE                                                  *edit-markdown-table-usage*
+
+Place your cursor on the cell of the markdown table that you want to edit.
+>
+    :lua require('edit-markdown-table').edit_cell() -- or :EditMarkdownTable
+<
+
+--------------------------------------------------------------------------------
+PREVIEW                                              *edit-markdown-table-preview*
+
+[](https://asciinema.org/a/M2cPbIFc3EpnDctPbRL6Zk3nU)
+
+In this example, we are editing this example (doc/example.md). You can see that especially when `wrap` is turned on, it can be difficult to get a clear view of what you are editing. This plugin simplifies this process by opening a dialog with the text of the current cell so you can make your changes and apply them back to the table.
+
+This plugin uses `vim.ui.input` for the input dialog. In this preview, I am using `dressing.nvim` (https://github.com/stevearc/dressing.nvim) to provide the UI with the following configuration:
+>
+    require("dressing").setup({
+        input = {
+            enabled = true,
+            start_in_insert = false,
+            win_options = {
+                winblend = 0,
+                wrap = true,
+            },
+        }
+    })
+<
+
