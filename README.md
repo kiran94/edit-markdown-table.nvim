@@ -4,7 +4,7 @@
 
 > Edit Markdown Tables from Neovim
 
-`edit-markdown-table.nvim` is a simple plugin which makes updating markdown tables a breeze, even for tables with length strings. See the [preview](#Preview) for a demo.
+`edit-markdown-table.nvim` is a simple plugin which makes updating markdown tables a breeze, even for tables with lengthy strings. See the [preview](#Preview) for a demo.
 
 ## Install 
 
